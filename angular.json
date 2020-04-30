@@ -22,6 +22,7 @@
             "assets": [
               "src/config.html",
               "src/favicon.ico",
+              "src/Staticfile",
               "src/assets"
             ],
             "styles": [

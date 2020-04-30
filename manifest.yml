@@ -1,0 +1,8 @@
+applications:
+- name: angular-ssi
+  buildpacks:
+  - staticfile_buildpack
+  disk_quota: 32M
+  memory: 32M
+  path: dist/angular-ssi/
+  stack: cflinuxfs3
