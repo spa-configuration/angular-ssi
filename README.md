@@ -1,27 +1,36 @@
-# AngularSsi
+# SPA Configuration - Angular SSI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+Example of using server-side includes to inject runtime configuration to an Angular single-page app.
 
-## Development server
+## Notes
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ - Bootstrapped using [Angular CLI]
+ - Set up for deployment to [Cloud Foundry]
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This demo includes two sets of configuration:
 
-## Build
+ - development (in `src/configuration.js`); and
+ - production (in `public/config.html`).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The SSI directive in `public/index.html` is replaced by the content of `public/config.html` at
+runtime, if SSI is enabled on the server (the included `Staticfile` does this for the Nginx used
+in the [Staticfile buildpack]).
 
-## Running unit tests
+To run locally with the development configuration:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm start
+```
 
-## Running end-to-end tests
+To deploy to CF with the production configuration, using the [CF CLI]:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```bash
+npm run build && cf push
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  [Angular CLI]: https://cli.angular.io/
+  [CF CLI]: https://docs.cloudfoundry.org/cf-cli/install-go-cli.html
+  [Cloud Foundry]: https://cloudfoundry.org/
+  [Staticfile buildpack]: https://docs.cloudfoundry.org/buildpacks/staticfile/index.html
